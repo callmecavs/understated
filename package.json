@@ -1,6 +1,6 @@
 {
   "name":        "understated",
-  "description": "",
+  "description": "Render stateless components and JSX to real DOM.",
 
   "main":        "dist/understated.js",
   "module":      "dist/understated.module.js",
