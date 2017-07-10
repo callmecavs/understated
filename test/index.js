@@ -73,13 +73,13 @@ describe('understated', () => {
 
   it('should render nested components', () => {
     const Parent = ({ name, style, children }) => (
-      <div class={ name } style={ style }>
+      <div className={ name } style={ style }>
         { children }
       </div>
     )
 
     const Child = ({ text }) => (
-      <p class="inner">{ text }</p>
+      <p className="inner">{ text }</p>
     )
 
     const test = (
