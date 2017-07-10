@@ -1,0 +1,55 @@
+{
+  "name":        "understated",
+  "description": "",
+
+  "main":        "dist/understated.js",
+  "module":      "dist/understated.module.js",
+  "jsnext:main": "dist/understated.module.js",
+
+  "version": "0.0.1",
+  "license": "MIT",
+
+  "repository": "callmecavs/understated",
+
+  "author": {
+    "name":  "Michael Cavalea",
+    "email": "callmecavs@gmail.com",
+    "url":   "http://callmecavs.com/"
+  },
+
+  "scripts": {
+    "build":      "rollup -c",
+    "dev":        "rollup -c -w -m inline",
+    "lint":       "eslint src",
+    "prebuild":   "rm -rf dist",
+    "prepublish": "npm run test",
+    "pretest":    "npm run build",
+    "server":     "python -m SimpleHTTPServer 3000",
+    "test":       "npm run lint && mocha --compilers js:babel-core/register"
+  },
+
+  "keywords": [
+
+  ],
+
+  "dependencies": {
+    "next-thing": "0.0.3"
+  },
+
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-preset-env": "^1.2.2",
+    "chai": "^3.5.0",
+    "eslint": "^3.13.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "jsdom": "^11.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.2.0",
+    "rollup": "^0.41.1",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-watch": "^3.2.2"
+  }
+}
