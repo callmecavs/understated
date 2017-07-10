@@ -10,6 +10,29 @@ Render stateless components and JSX to real DOM.
 $ npm i understated --save
 ```
 
+## Use
+
+```javascript
+import {
+  h,
+  render
+} from 'understated'
+
+// tell babel to use h as the JSX pragma
+/** @jsx h */
+
+// create a component
+const Component = props => (
+  <p className="content">{ props.text }</p>
+)
+
+// render it
+render(
+  <Component text="A stateless component."/>,
+  document.body
+)
+```
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT). © 2017 Michael Cavalea
