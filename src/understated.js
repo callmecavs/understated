@@ -74,11 +74,11 @@ const build = obj => {
   }
 }
 
-const render = (tree, target, cb) => {
+const render = (tree, target, done) => {
   target.appendChild(build(tree))
 
-  if (typeof cb === 'function') {
-    tick(cb)
+  if (typeof done === 'function') {
+    tick(done)
   }
 }
 
