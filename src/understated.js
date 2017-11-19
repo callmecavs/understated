@@ -1,5 +1,3 @@
-import { tick } from 'next-thing'
-
 const h = (tag, props, ...children) => {
   return {
     tag,
@@ -74,12 +72,8 @@ const build = obj => {
   }
 }
 
-const render = (tree, target, done) => {
+const render = (tree, target) => {
   target.appendChild(build(tree))
-
-  if (typeof done === 'function') {
-    tick(done)
-  }
 }
 
 export { render }
