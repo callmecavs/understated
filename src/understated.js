@@ -21,6 +21,8 @@ const setBooleanAttr = (node, name, value) => {
   }
 }
 
+const setEventAttr = (node, name, value) => node.addEventListener(name, value, false)
+
 const setStyleAttr = (node, value) => {
   if (typeof value === 'string') {
     node.setAttribute('style', value)
@@ -51,6 +53,12 @@ const createNode = (tag, props, children, ns) => {
         setStyleAttr(node, value)
       } else if (typeof value === 'boolean') {
         setBooleanAttr(node, name, value)
+      } else if (name.slice(0, 2) === 'on') {
+        const eventName = name
+          .slice(2)
+          .toLowerCase()
+
+        setEventAttr(node, eventName, value)
       } else {
         node.setAttribute(name, value)
       }
