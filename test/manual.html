@@ -12,8 +12,8 @@
       console.log('Module assigned to window.Understated. Logged below:')
       console.log(Understated)
 
-      const h = Understated.h
-      const render = Understated.render
+      var h = Understated.h
+      var render = Understated.render
 
       render(
         h(
@@ -45,6 +45,11 @@
             null,
             'After SVG'
           ),
+          h(
+            'p',
+            { onClick: function () { console.log('Click handler') } },
+            'Click handler'
+          )
         ),
         document.body
       )
