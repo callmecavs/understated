@@ -33,8 +33,12 @@ const setStyleAttr = (node, value) => {
   }
 }
 
-const createNode = (tag, props, children) => {
-  const node = document.createElement(tag)
+const createNode = (tag, props, children, ns) => {
+  const svg = ns || tag === 'svg'
+
+  const node = svg
+    ? document.createElementNS('http://www.w3.org/2000/svg', tag)
+    : document.createElement(tag)
 
   Object
     .keys(props)
@@ -52,7 +56,7 @@ const createNode = (tag, props, children) => {
       }
     })
 
-  children.forEach(child => render(child, node))
+  children.forEach(child => render(child, node, svg))
 
   return node
 }
@@ -62,18 +66,18 @@ const createComponent = (tag, props, children) => {
   return build(tag(props))
 }
 
-const build = obj => {
+const build = (obj, ns) => {
   if (typeof obj === 'string') {
     return createText(obj)
   } else if (typeof obj.tag === 'function') {
     return createComponent(obj.tag, obj.props, obj.children)
   } else {
-    return createNode(obj.tag, obj.props, obj.children)
+    return createNode(obj.tag, obj.props, obj.children, ns)
   }
 }
 
-const render = (tree, target) => {
-  target.appendChild(build(tree))
+const render = (tree, target, ns = false) => {
+  target.appendChild(build(tree, ns))
 }
 
 export { render }
