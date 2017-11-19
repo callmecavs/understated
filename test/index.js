@@ -129,4 +129,24 @@ describe('understated', () => {
 
     expect(sandbox.innerHTML).to.equal('<ul class="list"><li class="item">One</li><li class="item">Two</li><li class="item">Three</li></ul>')
   })
+
+  it('should render SVG', () => {
+    const test = (
+      <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100%" height="100%" fill="red"/>
+        <circle cx="150" cy="100" r="80" fill="green"/>
+        <text x="150" y="125" fontSize="60" textAnchor="middle" fill="white">SVG</text>
+      </svg>
+    )
+
+    const sandbox = document.createElement('div')
+
+    render(
+      test,
+      sandbox
+    )
+
+    expect(sandbox.querySelector('svg').namespaceURI).to.equal('http://www.w3.org/2000/svg')
+    expect(sandbox.innerHTML).to.equal('<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="red"></rect><circle cx="150" cy="100" r="80" fill="green"></circle><text x="150" y="125" fontSize="60" textAnchor="middle" fill="white">SVG</text></svg>')
+  })
 })
