@@ -100,4 +100,33 @@ describe('understated', () => {
 
     expect(sandbox.innerHTML).to.equal('<div class="outer" style="cursor: pointer;"><p class="inner">A nested child component.</p><p class="inner">Another nested child component.</p></div>')
   })
+
+  it('should render component arrays', () => {
+    const Item = ({ text }) => (
+      <li className="item">{ text }</li>
+    )
+
+    const items = [
+      'One',
+      'Two',
+      'Three'
+    ].map(text => <Item text={ text }/>)
+
+    const List = ({ children }) => (
+      <ul className="list">{ children }</ul>
+    )
+
+    const test = (
+      <List>{ items }</List>
+    )
+
+    const sandbox = document.createElement('div')
+
+    render(
+      test,
+      sandbox
+    )
+
+    expect(sandbox.innerHTML).to.equal('<ul class="list"><li class="item">One</li><li class="item">Two</li><li class="item">Three</li></ul>')
+  })
 })
